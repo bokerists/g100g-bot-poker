@@ -123,23 +123,23 @@ exports = module.exports = {
 
 
     if (this.hasColore(myCards, cards)) {
-      return true;
+      return 1;
     }
 
     if (this.hasCoppia(myCards)) {
 
       // Rimango se alla prima carta ho un full
       if (this.hasFull(this.hasCoppia(myCards), cards) && cards.length > 1) {
-        return true;
+        return 3;
       }
 
       if (this.hasPoker(this.hasCoppia(myCards), cards) && cards.length > 2) {
-        return true;
+        return 4;
       }
 
 
       if (cards.length < 2) {
-        return true;
+        return 2;
       } else {
         return false;
       }
@@ -147,7 +147,7 @@ exports = module.exports = {
     }
 
     if (this.hasCoppiaFromBank(myCards, cards)) {
-      return true;
+      return 1;
     }
 
     return false;

@@ -25,10 +25,13 @@ exports = module.exports = {
 
     // console.log(`Currently playing tournament ${gamestate.tournamentId}`);
     //
-    var myCards = cards.getMyCards(gamestate);
+    var myCards = cards.getMyCards(gamestate),
+        myBet = cards.check(myCards, gamestate.commonCards);
 
-    if (cards.check(myCards, gamestate.commonCards)) {
-      betValue = gamestate.callAmount;
+    if (myBet !== false) {
+
+      betValue = Math.max(gamestate.callAmount, gamestate.sb * myBet);
+
     }
 
     return bet(betValue);

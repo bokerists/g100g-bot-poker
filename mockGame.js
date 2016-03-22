@@ -22,4 +22,6 @@ exports = module.exports = gamestate = {
         {"rank": "6",                "type": "C"}
     ],
 
+    "sb": 25
+
 };
