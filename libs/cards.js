@@ -121,9 +121,6 @@ exports = module.exports = {
 
   check: function (myCards, cards) {
 
-    if (this.hasCoppiaFromBank(myCards, cards)) {
-      return true;
-    }
 
     if (this.hasColore(myCards, cards)) {
       return true;
@@ -147,6 +144,10 @@ exports = module.exports = {
         return false;
       }
 
+    }
+
+    if (this.hasCoppiaFromBank(myCards, cards)) {
+      return true;
     }
 
     return false;
