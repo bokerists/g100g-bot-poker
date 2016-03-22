@@ -12,7 +12,7 @@ exports = module.exports = {
     //
     // bet is the function you should use to send your bet.
 
-
+    var betValue = 0;
 
     // enjoy the game!
 
@@ -21,9 +21,9 @@ exports = module.exports = {
 
     'use strict';
 
-    console.log(`Currently playing tournament ${gamestate.tournamentId}`);
+    // console.log(`Currently playing tournament ${gamestate.tournamentId}`);
 
-    return bet(0);
+    return bet(betValue);
 
   }
 
