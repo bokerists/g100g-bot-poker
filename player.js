@@ -1,4 +1,6 @@
 
+var cards = require("./libs/cards.js");
+
 exports = module.exports = {
 
   VERSION: 'Superstar poker js-player',
@@ -22,6 +24,12 @@ exports = module.exports = {
     'use strict';
 
     // console.log(`Currently playing tournament ${gamestate.tournamentId}`);
+    //
+    var myCards = cards.getMyCards(gamestate);
+
+    if (cards.check(myCards, gamestate.commonCards)) {
+      betValue = gamestate.callAmount;
+    }
 
     return bet(betValue);
 
