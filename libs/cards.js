@@ -44,14 +44,40 @@ exports = module.exports = {
 
   },
 
+  hasPoker: function (rank, commonCards) {
+
+    var hasPoker = false,
+        sameRank = 0;
+
+    commonCards.forEach(function (card) {
+
+      if (card.rank === rank) {
+        sameRank++;
+
+        if (sameRank == 2) {
+          hasPoker = true;
+        }
+
+      }
+    });
+
+    return hasPoker;
+
+  },
+
   check: function (myCards, cards) {
 
     if (this.hasCoppia(myCards)) {
 
       // Rimango se alla prima carta ho un full
-      if (this.hasFull(this.hasCoppia(myCards), cards) && cards.length === 1) {
+      if (this.hasFull(this.hasCoppia(myCards), cards) && cards.length > 1) {
         return true;
       }
+
+      if (this.hasPoker(this.hasCoppia(myCards), cards) && cards.length > 2) {
+        return true;
+      }
+
 
       if (cards.length < 2) {
         return true;

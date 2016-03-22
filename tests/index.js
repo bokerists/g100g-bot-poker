@@ -1,6 +1,7 @@
 var test = require('tape').test;
 var cards = require('../libs/cards.js');
 var game = require('../mockGame.js');
+var mockCards = require('../mockCards.js');
 // var mockCards = require('../mockCards.js');
 
 test('Test', function(t) {
@@ -21,7 +22,27 @@ test('Test', function(t) {
   //Last
   t.equal(cards.check(myCards, game.commonCards), true);
 
+  t.end();
 
+});
+
+test('Poker', function(t) {
+
+  game.commonCards = [
+    mockCards.d1,
+    mockCards.h1,
+  ];
+
+  var myCards = [
+    mockCards.s1,
+    mockCards.c1,
+  ];
+
+  console.log(game);
+
+  //1
+  t.notEqual(cards.hasPoker(cards.hasCoppia(myCards),  game.commonCards), false, "ho un poker");
 
   t.end();
+
 });
