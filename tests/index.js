@@ -6,7 +6,7 @@ var mockCards = require('../mockCards.js');
 
 test('Test', function(t) {
   //1
-  t.equal(cards.check(), false);
+  t.equal(cards.getBet(), false);
 
   var myCards = cards.getMyCards(game);
 
@@ -20,7 +20,7 @@ test('Test', function(t) {
   t.notEqual(cards.hasFull(cards.hasCoppia(myCards),  game.commonCards), false, "ho un full");
 
   //Last
-  t.equal(cards.check(myCards, game.commonCards), true);
+  t.notEqual(cards.getBet(myCards, game.commonCards), false);
 
   t.end();
 
@@ -82,6 +82,48 @@ test('Coppia dal banco', function(t) {
 
   //1
   t.notEqual(cards.hasCoppiaFromBank(myCards,  game.commonCards), false, "ho coppia");
+
+  t.end();
+
+});
+
+test('hasFigures', function(t) {
+
+  var myCardsWithFigures = [
+    mockCards.d1,
+    mockCards.cq
+  ];
+
+  //1
+  t.equal(cards.hasFigures(myCardsWithFigures), true, "ho una figura");
+
+  var myCardsWithoutFigures = [
+    mockCards.d1,
+    mockCards.c2
+  ];
+
+  t.notEqual(cards.hasFigures(myCardsWithoutFigures), true, "non ho una figura");
+
+  t.end();
+
+});
+
+test('hasFigures', function(t) {
+
+  var myCardsWithFigures = [
+    mockCards.dq,
+    mockCards.cq
+  ];
+
+  //1
+  t.equal(cards.hasAllFigures(myCardsWithFigures), true, "ho una figura");
+
+  var myCardsWithoutFigures = [
+    mockCards.dq,
+    mockCards.c2
+  ];
+
+  t.notEqual(cards.hasAllFigures(myCardsWithoutFigures), true, "non ho una figura");
 
   t.end();
 

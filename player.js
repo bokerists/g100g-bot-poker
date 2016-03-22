@@ -26,7 +26,7 @@ exports = module.exports = {
     // console.log(`Currently playing tournament ${gamestate.tournamentId}`);
     //
     var myCards = cards.getMyCards(gamestate),
-        myBet = cards.check(myCards, gamestate.commonCards);
+        myBet = cards.getBet(myCards, gamestate.commonCards);
 
     if (myBet !== false) {
 

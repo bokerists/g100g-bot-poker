@@ -1,5 +1,7 @@
 exports = module.exports = {
 
+  _figures: ['Q', 'K', 'J', 'A'],
+
   getMyCards: function (game) {
 
     var myCards = [];
@@ -95,6 +97,38 @@ exports = module.exports = {
 
   },
 
+  hasFigures: function (myCards) {
+
+    var hasFigures = false;
+
+    myCards.forEach(function (card) {
+
+      if(this._figures.indexOf(card.rank) !== -1) {
+        hasFigures = true;
+      }
+
+    }.bind(this));
+
+    return hasFigures;
+  },
+
+  hasAllFigures: function (myCards) {
+
+    var hasFigures = false;
+
+    myCards.forEach(function (card) {
+
+      if(this._figures.indexOf(card.rank) !== -1) {
+        hasFigures = true;
+      } else {
+        hasFigures = false;
+      }
+
+    }.bind(this));
+
+    return hasFigures;
+  },
+
   hasCoppiaFromBank: function (myCards, cards) {
 
     var hasCoppia = false;
@@ -119,8 +153,7 @@ exports = module.exports = {
 
   },
 
-  check: function (myCards, cards) {
-
+  getBet: function (myCards, cards) {
 
     if (this.hasColore(myCards, cards)) {
       return 1;
@@ -138,16 +171,18 @@ exports = module.exports = {
       }
 
 
-      if (cards.length < 2) {
-        return 2;
-      } else {
-        return false;
-      }
+      // if (cards.length < 2) {
+      //   return 2;
+      // } else {
+      //   return false;
+      // }
+      //
+      return this.hasAllFigures(myCards) ? 3 : 1;
 
     }
 
     if (this.hasCoppiaFromBank(myCards, cards)) {
-      return 1;
+      return this.hasFigures(myCards) ? 3 : 1;
     }
 
     return false;
