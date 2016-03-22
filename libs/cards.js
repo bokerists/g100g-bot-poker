@@ -101,6 +101,7 @@ exports = module.exports = {
 
     var hasFigures = false;
 
+      try {
     myCards.forEach(function (card) {
 
       if(this._figures.indexOf(card.rank) !== -1) {
@@ -108,6 +109,10 @@ exports = module.exports = {
       }
 
     }.bind(this));
+
+  } catch(e) {
+    hasFigures = false;
+  }
 
     return hasFigures;
   },
@@ -115,16 +120,20 @@ exports = module.exports = {
   hasAllFigures: function (myCards) {
 
     var hasFigures = false;
+    try {
 
-    myCards.forEach(function (card) {
+      myCards.forEach(function (card) {
 
-      if(this._figures.indexOf(card.rank) !== -1) {
-        hasFigures = true;
-      } else {
-        hasFigures = false;
-      }
+        if(this._figures.indexOf(card.rank) !== -1) {
+          hasFigures = true;
+        } else {
+          hasFigures = false;
+        }
 
-    }.bind(this));
+      }.bind(this));
+    } catch(e) {
+      hasFigures = false;
+    }
 
     return hasFigures;
   },
@@ -183,6 +192,14 @@ exports = module.exports = {
 
     if (this.hasCoppiaFromBank(myCards, cards)) {
       return this.hasFigures(myCards) ? 3 : 1;
+    }
+
+    if (this.hasFigures(myCards)) {
+
+      if (this.hasAllFigures(myCards)) {
+        return 3;
+      }
+      return 1;
     }
 
     return false;
