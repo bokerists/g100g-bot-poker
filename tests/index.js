@@ -67,3 +67,22 @@ test('Colore', function(t) {
   t.end();
 
 });
+
+test('Coppia dal banco', function(t) {
+
+  game.commonCards = [
+    mockCards.d2,
+    mockCards.d1,
+  ];
+
+  var myCards = [
+    mockCards.c1,
+    mockCards.h2
+  ];
+
+  //1
+  t.notEqual(cards.hasColoreFromBank(myCards,  game.commonCards), false, "ho coppia");
+
+  t.end();
+
+});

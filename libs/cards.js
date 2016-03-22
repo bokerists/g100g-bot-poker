@@ -95,6 +95,24 @@ exports = module.exports = {
 
   },
 
+  hasColoreFromBank: function (myCards, cards) {
+
+    var hasCoppia = false;
+
+    myCards.forEach(function (mycard) {
+
+      cards.forEach(function (card) {
+        if (mycard.rank === card.rank) {
+          hasCoppia = true;
+        }
+      });
+
+    });
+
+    return hasCoppia;
+
+  },
+
   check: function (myCards, cards) {
 
     if (this.hasColore(myCards, cards)) {
