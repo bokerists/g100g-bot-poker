@@ -81,7 +81,7 @@ test('Coppia dal banco', function(t) {
   ];
 
   //1
-  t.notEqual(cards.hasColoreFromBank(myCards,  game.commonCards), false, "ho coppia");
+  t.notEqual(cards.hasCoppiaFromBank(myCards,  game.commonCards), false, "ho coppia");
 
   t.end();
 

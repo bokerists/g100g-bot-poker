@@ -95,9 +95,11 @@ exports = module.exports = {
 
   },
 
-  hasColoreFromBank: function (myCards, cards) {
+  hasCoppiaFromBank: function (myCards, cards) {
 
     var hasCoppia = false;
+
+    try {
 
     myCards.forEach(function (mycard) {
 
@@ -109,11 +111,19 @@ exports = module.exports = {
 
     });
 
+  } catch(e) {
+    hasCoppia = false;
+  }
+
     return hasCoppia;
 
   },
 
   check: function (myCards, cards) {
+
+    if (this.hasCoppiaFromBank(myCards, cards)) {
+      return true;
+    }
 
     if (this.hasColore(myCards, cards)) {
       return true;
