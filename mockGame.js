@@ -19,7 +19,6 @@ exports = module.exports = gamestate = {
     "me": 1,
     "callAmount": 222,
     "commonCards": [
-        {"rank": "3",                "type": "C"},
         {"rank": "6",                "type": "C"}
     ],
 

@@ -13,10 +13,15 @@ test('Test', function(t) {
   t.equal(myCards, game.players[0].cards);
 
   //3
-  t.equal(cards.isCoppia(myCards), true, "è una coppia");
+  t.notEqual(cards.hasCoppia(myCards), false, "è una coppia");
 
   //4
+  t.notEqual(cards.hasFull(cards.hasCoppia(myCards),  game.commonCards), false, "ho un full");
+
+  //Last
   t.equal(cards.check(myCards, game.commonCards), true);
+
+
 
   t.end();
 });

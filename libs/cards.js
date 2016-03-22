@@ -14,25 +14,51 @@ exports = module.exports = {
 
   },
 
-  isCoppia: function (mycard) {
+  hasCoppia: function (mycard) {
 
     try {
       if (mycard[0].rank == mycard[1].rank) {
-        return true;
+        return mycard[0].rank;
       }
 
     } catch(e) {
       return false;
     }
 
-  return false;
+    return false;
+
+  },
+
+  hasFull: function (rank, commonCards) {
+
+    var hasFull = false;
+
+    commonCards.forEach(function (card) {
+
+      if (card.rank === rank) {
+        hasFull = rank;
+      }
+    });
+
+    return hasFull;
 
   },
 
   check: function (myCards, cards) {
 
-    if (this.isCoppia(myCards)) {
-      return true;
+    if (this.hasCoppia(myCards)) {
+
+      // Rimango se alla prima carta ho un full
+      if (this.hasFull(this.hasCoppia(myCards), cards) && cards.length === 1) {
+        return true;
+      }
+
+      if (cards.length < 2) {
+        return true;
+      } else {
+        return false;
+      }
+
     }
 
     return false;
