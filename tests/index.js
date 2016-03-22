@@ -38,10 +38,31 @@ test('Poker', function(t) {
     mockCards.c1,
   ];
 
-  console.log(game);
-
   //1
   t.notEqual(cards.hasPoker(cards.hasCoppia(myCards),  game.commonCards), false, "ho un poker");
+
+  t.end();
+
+});
+
+test('Colore', function(t) {
+
+  game.commonCards = [
+    mockCards.d1,
+    mockCards.d1,
+    mockCards.d1,
+    mockCards.d1,
+    mockCards.d1,
+
+  ];
+
+  var myCards = [
+    mockCards.d1,
+    mockCards.d1,
+  ];
+
+  //1
+  t.notEqual(cards.hasColore(myCards,  game.commonCards), false, "ho colore");
 
   t.end();
 

@@ -65,7 +65,41 @@ exports = module.exports = {
 
   },
 
+  hasColore: function (myCards, cards) {
+
+    // Chek if i have two card with same Colore
+    //
+    var sameType = false,
+        hasColore = false;
+
+    try {
+      if (myCards[0].type == myCards[1].type) {
+        sameType = myCards[0].type;
+      }
+
+    } catch(e) {
+      return false;
+    }
+
+    if (sameType === false) return false;
+
+
+    cards.forEach(function (card) {
+
+      if (card.type === sameType) {
+        hasColore = sameType;
+      }
+    });
+
+    return hasColore;
+
+  },
+
   check: function (myCards, cards) {
+
+    if (this.hasColore(myCards, cards)) {
+      return true;
+    }
 
     if (this.hasCoppia(myCards)) {
 
