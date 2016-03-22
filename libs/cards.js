@@ -17,7 +17,7 @@ exports = module.exports = {
   isCoppia: function (mycard) {
 
     try {
-      if (mycard[0].rank == mycard[1].rank && mycard[0].type == mycard[1].type) {
+      if (mycard[0].rank == mycard[1].rank) {
         return true;
       }
 

@@ -4,7 +4,7 @@ exports = module.exports = gamestate = {
         "id": 1,
         "name": "g100g",
         "cards": [
-            {"rank": "3",                "type": "C"},
+            {"rank": "6",                "type": "D"},
             {"rank": "6",                "type": "C"}
         ],
     },
